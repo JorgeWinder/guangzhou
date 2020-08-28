@@ -1,0 +1,29 @@
+h1{
+    font-size: 27px !important;
+    color: #3F391C;
+}
+
+
+.linea-titulo{
+    border-bottom: 5px #FFD411 solid;
+    
+    margin: 0 auto !important;
+    width: 402px !important;
+}
+
+.titulo-home{
+    margin: 0 auto !important;
+    text-align: center;
+    font-weight: bold;
+
+    margin-top: 50px !important;
+    margin-bottom: 20px !important;
+}
+
+.home-fondo{
+    background-image: url('../../img/fondo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -200px 280px;
+    padding-bottom: 50px;
+}

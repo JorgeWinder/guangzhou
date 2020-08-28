@@ -1,0 +1,27 @@
+.navbar-fixed nav{
+    height: 80px !important;
+}
+
+.navbar-fixed nav ul a{
+    color: #685353 !important;
+}
+
+nav ul a:hover {
+    background-color: transparent !important;
+}
+
+.div-img{
+    display: flex;
+    padding: 20px;
+    /* justify-content: top; */
+    /* justify-items: baseline; */
+    align-items: center;
+    padding: 5px !important;
+}
+
+.div-img img{
+    width: 35px; 
+}
+
+
+

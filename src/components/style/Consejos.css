@@ -1,0 +1,31 @@
+.card.horizontal{
+    background-color: #FFD411;
+    margin-top: 50px;
+    border: 2px solid #937D17;
+} 
+
+.card.horizontal .card-image{
+    padding: 25px;
+} 
+
+.card.horizontal .card-image img{
+    width: 300px !important;
+}
+
+.video-texto{
+    font-weight: bold;
+    font-size: 13pt;
+    color: #3F391C;
+    padding-top: 20px;
+}
+
+.video-action{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+}
+
+.video-action a, .video-action i{
+    color: #3F391C !important;
+    font-weight: bold;
+}

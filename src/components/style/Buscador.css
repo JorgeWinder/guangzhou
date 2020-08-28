@@ -1,0 +1,22 @@
+.div-buscador{
+    border: 3px solid #C50D0F;
+    border-radius: 20px;
+    padding: 0px 20px 0 20px;
+    margin: 10px 10px;
+    height: 55px;
+}
+
+.div-buscador input{
+
+    width: 400px !important;
+    transform: translate(0, -6px) !important;
+
+    border-bottom: none !important;
+    box-shadow: none !important;
+
+    color: #685353 !important;
+}
+
+.div-buscador img{
+    width: 30px !important;
+}

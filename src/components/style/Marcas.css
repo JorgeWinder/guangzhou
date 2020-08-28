@@ -1,0 +1,12 @@
+/* section{
+    width: 100%;
+} */
+
+
+.container-marcas .row{
+    display: flex;
+    align-items: center;
+
+    margin: 100px 0 100px 0;
+    
+}
