@@ -3,13 +3,8 @@ import Navbar from '../components/Navbar'
 import Banner from '../components/Banner'
 import Marcas from '../components/Marcas'
 import Destacados from '../components/Destacados'
-import Consejos from '../components/Consejos'
+import Consejos from '../components/Consejos';
 // import Footer from '../components/Footer'
-
-
-import AwesomeSlider from 'react-awesome-slider';
-import AwesomeSliderStyles from 'react-awesome-slider/src/styles';
-
 
 import './style/Home.css' 
 

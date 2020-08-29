@@ -1,12 +1,12 @@
 .card.horizontal{
-    background-color: #FFD411;
+    background-color: white;
     margin-top: 50px;
     border: 2px solid #937D17;
-} 
+}
 
 .card.horizontal .card-image{
     padding: 25px;
-} 
+}
 
 .card.horizontal .card-image img{
     width: 300px !important;

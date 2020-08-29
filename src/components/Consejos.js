@@ -1,9 +1,25 @@
 import React, { Component } from 'react'
 import img from '../img/video.png'
+import { Link } from 'react-router-dom'
 
 import "./style/Consejos.css"
 
 export class Consejos extends Component {
+
+    state = {
+        openModal: 0
+    }
+
+    openModal = ()=>{
+        alert("Abrir modal")
+    }
+
+    componentWillMount(){
+
+
+    }
+
+
     render() {
         return (
             <section className="container">
@@ -22,7 +38,7 @@ export class Consejos extends Component {
                                 </div>
                                 <div className="card-action video-action">
                                 <i className="small material-icons">play_circle_outline</i>
-                                <a href="/">Mira este video</a>
+                                <a href="javascript:void(0)" onClick={this.openModal()}>Mira este video</a>
                                 </div>
                             </div>
                     </div>
