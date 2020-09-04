@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import img from '../img/video.png'
-import { Link } from 'react-router-dom'
+
+import ModalVideo from '../components/ModalVideo'
+// import { Link } from 'react-router-dom'
 
 import "./style/Consejos.css"
 
@@ -11,11 +13,6 @@ export class Consejos extends Component {
     }
 
     openModal = ()=>{
-        alert("Abrir modal")
-    }
-
-    componentWillMount(){
-
 
     }
 
@@ -36,10 +33,9 @@ export class Consejos extends Component {
                                 <div className="card-content">
                                 <p className="video-texto">En esta ocasión conocerás 10 Geniales inventos muy útiles para tu coche. Accesorios para tu auto realmente prácticos que te gustará conocer.</p>
                                 </div>
-                                <div className="card-action video-action">
-                                <i className="small material-icons">play_circle_outline</i>
-                                <a href="javascript:void(0)" onClick={this.openModal()}>Mira este video</a>
-                                </div>
+
+                                <ModalVideo/>
+
                             </div>
                     </div>
 

@@ -4,6 +4,7 @@ import Banner from '../components/Banner'
 import Marcas from '../components/Marcas'
 import Destacados from '../components/Destacados'
 import Consejos from '../components/Consejos';
+
 // import Footer from '../components/Footer'
 
 import './style/Home.css' 
@@ -39,10 +40,10 @@ export class Home extends Component {
                 }
 
                 <Marcas/>
+
                 <div className="home-fondo">
                     <Destacados/>
-                    <Consejos/>
-
+                    <Consejos/>                    
                 </div>
 
             </div>
