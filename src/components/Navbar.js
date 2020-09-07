@@ -11,7 +11,7 @@ import Buscador from './Buscador'
 export class Navbar extends Component {
     render() {
         return (
-            <div>
+            
                 <React.Fragment>
 
                     <div className="navbar-fixed">
@@ -31,7 +31,7 @@ export class Navbar extends Component {
                                 <li>
                                     <div className="div-img">
                                         <img src={Herramienta} alt=""/>
-                                        <a href="/">Servicio técnico : 994403656</a>
+                                        <a rel="noopener noreferrer" href="#!">Servicio técnico : +51 934 172 415</a>
                                     </div>
                                 </li>
                                 <li>
@@ -72,7 +72,7 @@ export class Navbar extends Component {
 
 
                 </React.Fragment>
-            </div>
+           
         )
     }
 }

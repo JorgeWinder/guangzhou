@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export class Destacados extends Component {
     render() {
@@ -11,6 +12,7 @@ export class Destacados extends Component {
                 </h1>
 
                 <div className="linea-titulo"></div>
+                
 
                 <div className="row">
                     <div className="col s12 l4">
@@ -24,7 +26,7 @@ export class Destacados extends Component {
                                 <h6>Nommbre de producto 1</h6>
                                 </div>
                                 <div className="card-action center-align">
-                                    <button className="btn btn-small amber black-text"><i className="material-icons dp48">remove_red_eye</i>Ver Producto</button>
+                                    <Link to="/producto" className="btn btn-small amber black-text"><i className="material-icons dp48">remove_red_eye</i>Ver Producto</Link>
                                 </div>
                             </div>
 
@@ -42,7 +44,9 @@ export class Destacados extends Component {
                                 <h6>Nommbre de producto 1</h6>
                                 </div>
                                 <div className="card-action center-align">
-                                    <button className="btn btn-small amber black-text"><i className="material-icons dp48">remove_red_eye</i>Ver Producto</button>
+
+                                    <Link to="/producto" className="btn btn-small amber black-text"><i className="material-icons dp48">remove_red_eye</i>Ver Producto</Link>
+                                    
                                 </div>
                             </div>
 
@@ -60,7 +64,7 @@ export class Destacados extends Component {
                                 <h6>Nommbre de producto 1</h6>
                                 </div>
                                 <div className="card-action center-align">
-                                    <button className="btn btn-small amber black-text"><i className="material-icons dp48">remove_red_eye</i>Ver Producto</button>
+                                    <Link to="/producto" className="btn btn-small amber black-text"><i className="material-icons dp48">remove_red_eye</i>Ver Producto</Link>
                                 </div>
                             </div>
                         

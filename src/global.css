@@ -29,7 +29,7 @@ background-color: transparent !important;
   background-color: transparent !important;
 }
 
-.card button{
+.card button, .amber{
   display: flex;
   align-items: center;
 
@@ -38,13 +38,13 @@ background-color: transparent !important;
 
 }
 
-.card button:hover{
+.card button:hover, .amber{
 
   background-color: #fad655 !important;
 
 }
 
-.card button i{
+.card button i, .card .amber i{
   color: black;
   margin-right: 5px;
 }

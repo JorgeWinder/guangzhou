@@ -22,26 +22,25 @@ class ModalVideo extends Component {
                 
                 <div className="card-action video-action">
                         <i className="small material-icons">play_circle_outline</i>
-                        <a className="modal-trigger" href="#modal1">Mira este video</a>
+                        <a className="modal-trigger" href="#modal1" style={{border: "0"}}>Mira este video</a>
                 </div>
 
                 <div id="modal1" className="modal center">
                     <div className="modal-content">
-                    <h5>FERIA DE CANTON - FEBRERO 2020</h5>
-                    <p>
+                    {/* <h5>FERIA DE CANTON - FEBRERO 2020</h5> */}
+                    
                         <Iframe url="https://www.youtube.com/embed/TRU1-h23D1Q"
-                            width="560px"
-                            height="315px"
+                            width="100%"
+                            height="350px"
                             id="myId"
                             frameborder="0" 
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen 
-                            styles={{"display": "none"}}
                         />
-                    </p>
+                   
                     </div>
-                    <div className="modal-footer" style={{display: "fixed"}}>
-                    <a href="#!" className="modal-close waves-effect waves-green btn-flat">Agree</a>
+                    <div className="modal-footer">
+                        <a href="#!" className="modal-close waves-effect waves-green btn-flat">Salir</a>
                     </div>
                 </div>                
                 

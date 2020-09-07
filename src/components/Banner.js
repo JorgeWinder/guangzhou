@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import M from 'materialize-css'
 
-// import b1 from '../img/banner2.jpg'
+import b1 from '../img/banner1.png'
 
 export class Banner extends Component {
 
@@ -10,8 +10,11 @@ export class Banner extends Component {
         loading: true,
         error: null,
         data: undefined,
-        imgsBanner: null
+        imgsBanner: null,
+        
     }
+
+    intervalID = 0;
 
     componentDidMount(){
 
@@ -23,10 +26,14 @@ export class Banner extends Component {
                         indicators: true
                 });
 
-                setInterval(() => {
+                this.intervalID = setInterval(() => {
                     var instance = M.Carousel.getInstance(document.querySelector('.carousel.carousel-slider'));
                     instance.next();
                 }, 5000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.intervalID);
     }
 
     render() {
@@ -35,9 +42,12 @@ export class Banner extends Component {
                 <section>
                             <div className="carousel carousel-slider" >
 
+                                {/* <Link className="carousel-item" to="#one" ><img src="https://storage.googleapis.com/servicios-python-281205.appspot.com/banner1.png" alt=""/></Link>
                                 <Link className="carousel-item" to="#one" ><img src="https://storage.googleapis.com/servicios-python-281205.appspot.com/banner1.png" alt=""/></Link>
-                                <Link className="carousel-item" to="#one" ><img src="https://storage.googleapis.com/servicios-python-281205.appspot.com/banner1.png" alt=""/></Link>
-        
+*/}
+                                <Link className="carousel-item" to="#one" ><img src={b1} alt=""/></Link>
+                                <Link className="carousel-item" to="#one" ><img src={b1} alt=""/></Link>
+
                             </div>
 
                 </section>
