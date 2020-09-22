@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import img from '../../src/img/prod1.png'
 import marcas from '../../src/img/marcas.png'
+import ProductoRelacionado from '../components/ProductoRelacionado'
+
+import { Link } from 'react-router-dom'
 
 import './style/producto.css' 
 
@@ -23,12 +26,25 @@ export class Producto extends Component {
                 <section className="container" style={{'marginTop': '40px'}}>
 
                     <div className="row">
+
+                        <div className="col l7 s12"> 
+
+                            <Link to="/busqueda" style={{'display': 'flex', 'fontSize':'20px', 'alignItems':'center', 'color':'black'}}> 
+                                <i className="material-icons dp48">arrow_back</i>
+                                <span> Búsqueda por categoría y marca</span>
+                            </Link>
+
+                        </div>
+
+                    </div>
+                    
+                    <div className="row" style={{'marginTop': '-50px'}}>
                         <div className="col l6 s12">
 
                         </div>
                         <div className="col l6 s12 left">
                             <h1 className="titulo-producto">
-                                TurboWheel
+                                Anillos std
                             </h1>
 
                             <div className="linea-producto"></div>
@@ -57,7 +73,7 @@ export class Producto extends Component {
                             </p>
 
                             <p>
-                                <img className="responsive-img" src={marcas} alt="" srcset=""/>
+                                <img className="responsive-img" src={marcas} alt=""/>
                             </p>
 
                             <a href="#!" className="btn btn-large" style={{width: "100%", backgroundColor: "#5CCB67"}}>Hacer pedido via Whatsapp</a>
@@ -66,6 +82,8 @@ export class Producto extends Component {
                     </div>
 
                 </section>
+
+                <ProductoRelacionado/>
 
             </React.Fragment>
         )

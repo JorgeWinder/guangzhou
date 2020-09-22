@@ -23,7 +23,7 @@ export class Destacados extends Component {
                                     <span className="card-title"></span>
                                 </div>
                                 <div className="card-content center-align">
-                                <h6>Nommbre de producto 1</h6>
+                                    <h6>Anillos std</h6>
                                 </div>
                                 <div className="card-action center-align">
                                     <Link to="/producto" className="btn btn-small amber black-text"><i className="material-icons dp48">remove_red_eye</i>Ver Producto</Link>
@@ -41,7 +41,7 @@ export class Destacados extends Component {
                                     <span className="card-title"></span>
                                 </div>
                                 <div className="card-content center-align">
-                                <h6>Nommbre de producto 1</h6>
+                                <h6>Plato Presor</h6>
                                 </div>
                                 <div className="card-action center-align">
 
@@ -61,7 +61,7 @@ export class Destacados extends Component {
                                     <span className="card-title"></span>
                                 </div>
                                 <div className="card-content center-align">
-                                <h6>Nommbre de producto 1</h6>
+                                <h6> Valvula de freno de aire</h6>
                                 </div>
                                 <div className="card-action center-align">
                                     <Link to="/producto" className="btn btn-small amber black-text"><i className="material-icons dp48">remove_red_eye</i>Ver Producto</Link>

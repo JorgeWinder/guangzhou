@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Lupa from '../img/lupa.png'
 
+
 import './style/Buscador.css'
 
 export default class Buscador extends Component {
@@ -10,6 +11,10 @@ export default class Buscador extends Component {
                 <div className='div-buscador'>
                     <input type="text" name="buscador" id="buscador" placeholder="Busca tu repuesto, aquí"/>
                     <img src={Lupa} alt=""/>
+
+                    {/* <a href="/busqueda">
+                        
+                    </a> */}
                 </div>
             </div>
         )
