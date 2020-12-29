@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export default function ProductoRelacionado(props) {
+   
     return (
 
         <div className="col s12 m4 l4">
@@ -14,8 +15,8 @@ export default function ProductoRelacionado(props) {
                     <span className="card-title">{props.name}</span>
                     <p></p>
                 </div>
-                <div className="card-action center-align">
-                    <Link to="/producto" className="btn btn-small amber black-text"><i className="material-icons dp48">remove_red_eye</i>Ver Producto</Link>
+                <div className="card-action center-align"   >
+                    <Link to='/producto'  className="btn btn-small amber black-text"><i className="material-icons dp48">remove_red_eye</i>Ver Producto</Link>
                 </div>
             </div>
         </div>

@@ -17,7 +17,8 @@ export class Producto extends Component {
 
     async componentDidMount() {
         window.scrollTo(0, 0);
-        const url = "http://localhost:3002/api-guangzhou-service/producto?codigo=1"
+        let codigo = this.props.match.params.producto_id
+        const url = `http://localhost:3002/api-guangzhou-service/producto?codigo=${codigo}`
         const data = await Api.getData(url)
         this.setState({producto: data.body})
     }
@@ -89,7 +90,8 @@ export class Producto extends Component {
                     <div className="row">
                         {
                             this.state.producto?.productoRelacionado.map((producto) => {
-                                return(
+                                
+                                return( 
                                 <ProductoRelacionado name={producto.nombre}/>
                                 )
                             })
