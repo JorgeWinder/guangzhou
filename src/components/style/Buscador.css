@@ -20,3 +20,12 @@
 .div-buscador img{
     width: 30px !important;
 }
+
+.input-field input[type=text], .input-field input[type=number], .input-field input[type=date], .input-field input[type=password] {
+    background-color: transparent !important;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+
+  

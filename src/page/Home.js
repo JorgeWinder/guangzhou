@@ -1,35 +1,66 @@
 import React, { Component } from 'react'
-
 import Banner from '../components/Banner'
 import Marcas from '../components/Marcas'
 import Destacados from '../components/Destacados'
 import Consejos from '../components/Consejos'
-
+import Api from "../Api"
+import ProductoRelacionado from '../components/ProductoRelacionado'
+import Slider from 'react-slick'
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 import './style/Home.css' 
 
+
 export class Home extends Component {
-
-    // state = {
-    //     currentIndex : 0
-    // }
-
-    componentDidMount() {
-        window.scrollTo(0, 0);
-    }
-
-
+    state = {
+                productosDestacados: null,
+             }
+        
+            async componentDidMount() {
+                const url = "http://localhost:3002/api-guangzhou-service/producto"
+                const data = await Api.getData(url)
+                const productosDestacados = data.body.filter(producto => producto.destacado)
+                this.setState({ productosDestacados })   
+            }
+        
     render() {
+
+        const settings = {
+            dots: false,
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            pauseOnHover: true,
+            arrows: false,
+        }
+
         return (
             <div>
-
                 <Banner/>
                 <Marcas/>
+                <div className="home-fondo"> 
+                <section className="container">
+                    <h1 className="titulo-home">
+                        Productos destacados
+                    </h1>
+                    <div className="linea-titulo"></div>
+                        <div className="row">
+                         <Slider style={{ paddingLeft: "80px"}} {...settings}>
+                         {
+                                this.state.productosDestacados?.map(producto => {
+                                    return(
+                                    <ProductoRelacionado nombre={producto.nombre} id={producto._id} imagen={producto.imagen}/>
+                                    ) 
+                                })
+                            }
 
-                <div className="home-fondo">
-                    
-                    <Destacados/>
-                    <Consejos/>
+                         </Slider>
+                        </div>
+                </section>
                 </div>
+                <Consejos/>
 
             </div>
         )

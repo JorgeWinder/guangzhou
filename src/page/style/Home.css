@@ -24,7 +24,7 @@ h1{
 
 .home-fondo{
     background-image: url('../../img/fondo.png');
-    background-size: cover;
+    /* background-size: cover; */
     background-repeat: no-repeat;
     background-position: -200px 280px;
     padding-bottom: 50px;
