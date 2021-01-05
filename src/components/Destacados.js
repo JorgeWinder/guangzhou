@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Destacados({nombre, id}) {
+export default function Destacados({nombre, id, imagen}) {
     return (
                 <div className="col s12 l4">
                     <div className="card z-depth-2 hoverable" >
                         <div className="card-image">
-                            <img src="" alt="" />
+                            <img src={imagen} alt="" />
                             <span className="card-title"></span>
                         </div>
                         <div className="card-content center-align" >

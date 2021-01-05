@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Api from "../Api"
-
 import Logo from '../img/LogoTrasparente.png'
 import WhatsApp from '../img/wa.png'
 import Herramienta from '../img/herramienta.png'

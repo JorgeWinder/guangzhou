@@ -1,95 +1,177 @@
 import React, { Component } from 'react'
-// import img from '../../src/img/prod1.png'
-// import marcas from '../../src/img/marcas.png'
-import ProductoBusqueda from '../components/ProductoBusqueda'
+import Api from '../Api'
 
 import { Link } from 'react-router-dom'
 
-import './style/producto.css' 
+import './style/producto.css'
 import M from 'materialize-css'
+
 
 
 export class Producto extends Component {
 
-    // state = {
-    //     currentIndex : 0
-    // }
+    state = {
+        categorias: null,
+        marcas: null,
+        productos: null,
+        categoriaSelected: null,
+        marcaSelected: null,
+        matchingProductos: null
+    }
 
-    componentDidMount() {
+    handleClick =  async () => {
+        
+        const matchingProductos =  [];
+        this.state.productos.forEach((producto) => {
+            const categoriaMatching = producto.categoria._id == this.state.categoriaSelected
+            if (categoriaMatching){
+                if (this.state.marcaSelected){
+                    const foundMarca = producto.marca.find((marca) => marca._id == this.state.marcaSelected)
+                    if (foundMarca) {
+                        console.log("both matched", producto)
+                        matchingProductos.push(producto)
+                    }
+                } else {
+                    matchingProductos.push(producto)
+                }
+            }
+        })
+
+        // this.state.productos.map(producto => {
+        //     if ( producto.categoria._id == this.state.categoriaSelected) {
+        //         matchingProductos.push(producto)
+        //         console.log(matchingProductos)
+        //     } 
+        // })
+
+        await this.setState({ matchingProductos})
+        // console.log("State MatchinProductos",this.state.matchingProductos)
+    }
+
+    categoriaSelectedHandler = async (e) => {
+        await this.setState({categoriaSelected: e.target.value})
+        // console.log("Categoria",await this.state.categoriaSelected)
+    }
+
+    marcaSelectedHandler = async (e) => {
+        await this.setState({marcaSelected: e.target.value})
+        console.log("Marca",await this.state.marcaSelected)
+    }
+
+    async componentDidMount() {
+
+        const urlCategorias = "http://localhost:3002/api-guangzhou-service/categoria"
+        const dataCategorias = await Api.getData(urlCategorias)
+        const categorias = dataCategorias.body
+        this.setState({ categorias })
+
+        const urlMarcas = "http://localhost:3002/api-guangzhou-service/marca"
+        const dataMarcas = await Api.getData(urlMarcas)
+        const marcas = dataMarcas.body
+        this.setState({ marcas })
+
+        const urlProductos = "http://localhost:3002/api-guangzhou-service/producto"
+        const dataProductos = await Api.getData(urlProductos)
+        const productos = dataProductos.body
+        // console.log(productos) 
+        this.setState({ productos })  
+        
+    
+
         window.scrollTo(0, 0);
 
         var elems = document.querySelectorAll('select');
-        M.FormSelect.init(elems);
+        var instances = M.FormSelect.init(elems);
+        // console.log(instances)
     }
 
 
     render() {
         return (
             <React.Fragment>
-
-                <section className="container" style={{'marginTop': '40px'}}>
-
+                <section className="container" style={{ 'marginTop': '40px' }}>
                     <div className="row">
-
-                        <div className="col l7 s12"> 
-
-                            <Link to="/" style={{'display': 'flex', 'fontSize':'20px', 'alignItems':'center', 'color':'black'}}> 
+                        <div className="col l7 s12">
+                            <Link to="/" style={{ 'display': 'flex', 'fontSize': '20px', 'alignItems': 'center', 'color': 'black' }}>
                                 <i className="material-icons dp48">arrow_back</i>
                                 <span> Página de inicio</span>
                             </Link>
-
                         </div>
-
                     </div>
-                    
-                    <div className="row" style={{'marginTop': '-50px'}}>
-                        
+                    <div className="row" style={{ 'marginTop': '-50px' }}>
                         <div className="col l6 s12 left">
                             <h1 className="titulo-producto">
                                 Filtro de búsqueda
                             </h1>
-
                             <div className="linea-producto"></div>
                         </div>
-
                     </div>
-
                     <div className='row'>
-
                         <div className="input-field col l6 s12">
-                            <select>
-                            <option value="" disabled defaultValue>Seleccione categoría o familia</option>
-                            <option value="1">Motor</option>
-                            <option value="2">Sistema de cambios</option>
-                            <option value="3">Sistema de freno</option>
+                            <select onChange={this.categoriaSelectedHandler}> 
+                                <option value="" defaultValue>Seleccione categoría o familia</option>
+                                {
+                                    this.state.categorias?.map(categoria => {
+                                        return (
+                                            <option value={categoria._id}>{categoria.nombre}</option>
+                                        )
+                                    })
+                                }
                             </select>
                             <label></label>
                         </div>
-
                         <div className="input-field col l6 s12">
-                            <select>
-                            <option value="" disabled defaultValue>Seleccione una marca</option>
-                            <option value="1">JAC</option>
-                            <option value="2">JIN</option>
-                            <option value="3">BEI</option>
-                            <option value="4">INCA POWER</option>
-                            <option value="5">FOTON</option>
-                            <option value="6">DONGFENG</option>
+                            <select onChange={this.marcaSelectedHandler}>
+                                <option value=""  defaultValue>Seleccione una marca</option>
+                                {
+                                    this.state.marcas?.map(marca => {
+                                        return (
+                                            <option value={marca._id}>{marca.nombre}</option>
+                                        )
+                                    })
+                                }
                             </select>
                             <label></label>
                         </div>
-
                         <div className="input-field col l6 s12">
-                            <a id="idBuscar" href="#!" className="btn btn-large" style={{width: "100%", backgroundColor: "#fad655", "color":"black"}}>Buscar producto</a>
+                            <a id="idBuscar" href="#!" onClick= {this.handleClick}className="btn btn-large" style={{ width: "100%", backgroundColor: "#fad655", "color": "black" }}>Buscar producto</a>
                         </div>
-
                     </div>
-
-
                 </section>
-
-                <ProductoBusqueda/>
-
+                <section className="container">
+                    <div className="row">
+                        <div className="col l6 s12 left">
+                            <h1 className="titulo-producto">
+                                Productos relacionados
+                            </h1>
+                            <div className="linea-producto"></div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        {
+                            this.state.matchingProductos?.map( producto => {
+                                return (
+                                    <div className="col s12 m4 l4">
+                                    <div className="card">
+                    
+                                <div className="card-image">
+                                    <img src="https://storage.googleapis.com/contenido-web/storage-img/productos/producto4.png" alt=""/>
+                                    <span className="card-title black-text"></span>
+                                </div>
+                                <div className="card-content center">
+                                    <span className="card-title">{producto.nombre}</span>
+                                    <p></p>
+                                </div>
+                                <div className="card-action center-align">
+                                    <Link to={"/producto/" + producto._id} className="btn btn-small amber black-text"><i className="material-icons dp48">remove_red_eye</i>Ver Producto</Link>
+                                </div>
+                            </div>
+                        </div>
+                                )
+                            })
+                        }
+                    </div>
+                </section>
             </React.Fragment>
         )
     }

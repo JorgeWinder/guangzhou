@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import Banner from '../components/Banner'
-import Marcas from '../components/Marcas'
+
 import Destacados from '../components/Destacados'
 import Consejos from '../components/Consejos'
 import Api from "../Api"
-import ProductoRelacionado from '../components/ProductoRelacionado'
 import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
@@ -16,12 +15,12 @@ export class Home extends Component {
                 productosDestacados: null,
              }
         
-            async componentDidMount() {
-                const url = "http://localhost:3002/api-guangzhou-service/producto"
-                const data = await Api.getData(url)
-                const productosDestacados = data.body.filter(producto => producto.destacado)
-                this.setState({ productosDestacados })   
-            }
+    async componentDidMount() {
+        const url = "http://localhost:3002/api-guangzhou-service/producto"
+        const data = await Api.getData(url)
+        const productosDestacados = data.body.filter(producto => producto.destacado).slice(0,4)
+        this.setState({ productosDestacados })   
+    }
         
     render() {
 
@@ -39,7 +38,13 @@ export class Home extends Component {
         return (
             <div>
                 <Banner/>
-                <Marcas/>
+                {/* <Marcas/> */}
+                <section className="container container-marcas">
+                <h1 className="titulo-home">
+                    Tenemos todos los respuestos para todas estas marcas
+                </h1>
+                <div className="linea-titulo"></div>
+                </section>
                 <div className="home-fondo"> 
                 <section className="container">
                     <h1 className="titulo-home">
@@ -51,7 +56,7 @@ export class Home extends Component {
                          {
                                 this.state.productosDestacados?.map(producto => {
                                     return(
-                                    <ProductoRelacionado nombre={producto.nombre} id={producto._id} imagen={producto.imagen}/>
+                                    <Destacados nombre={producto.nombre} id={producto._id} imagen={producto.imagen}/>
                                     ) 
                                 })
                             }

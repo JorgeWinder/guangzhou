@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import img from '../../src/img/prod1.png'
 import marcas from '../../src/img/marcas.png'
-import ProductoRelacionado from '../components/ProductoRelacionado'
+// import ProductoRelacionado from '../components/ProductoRelacionado'
 import Api from '../Api'
 
 
@@ -81,7 +81,7 @@ export class Producto extends Component {
                                 {
                                     this.state.producto?.marca.map((m) => {
                                         return (
-                                            <div className="col">{m.nombre}</div>
+                                            <div className="col" key={m._id}>{m.nombre}</div>
                                         )
                                     })
                                 }
@@ -107,15 +107,15 @@ export class Producto extends Component {
                         {
                             this.state.producto?.productoRelacionado.map((producto) => {
                                 return (
-                                    // <ProductoRelacionado id={producto._id} nombre={producto.nombre}/>  
+                                    // <ProductoRelacionado handleRedireccionar={this.handleRedireccionar(producto._id)} nombre={producto.nombre} imagen={producto.imagen}/>  
                                     <div className="col s12 m4 l4">
                                         <div className="card">
                                             <div className="card-image">
-                                                <img src="https://storage.googleapis.com/contenido-web/storage-img/productos/producto4.png" alt="" />
+
                                                 <span className="card-title black-text"></span>
                                             </div>
                                             <div className="card-content center">
-                                                <span className="card-title">{producto.nombre}</span>
+                                                <span className="card-title" key={producto._id}>{producto.nombre}</span>
                                                 <p></p>
                                             </div>
                                             <div className="card-action center-align" >
