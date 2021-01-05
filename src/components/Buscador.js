@@ -4,8 +4,6 @@ import Api from "../Api"
 import M from 'materialize-css'
 import './style/Buscador.css'
 
-
-
 export default class Buscador extends Component {
     state = {
         productos: null,
@@ -22,11 +20,16 @@ export default class Buscador extends Component {
         const productos =  result.body
         this.setState({productos})
 
+        console.log( "productos antes de data", this.state.productos)
+
+
         const data = {}
 
         productos.forEach((producto) => {
             data[`${producto.nombre}`] = null;
         })
+
+        console.log("data", data)
 
         var elems = document.querySelectorAll('.autocomplete');
         M.Autocomplete.init(elems, {
@@ -40,14 +43,12 @@ export default class Buscador extends Component {
     }
 
     render() {
-        console.log(this.state.clickedId)
         
         return (
             <div>
-                <div className='div-buscador input-field' >
+                <div className='div-buscador input-field' >   
                     <input type="text" name="buscador" id="autocomplete-input" className="autocomplete" placeholder="Busca tu repuesto, aquí" /> 
-                    <img src={Lupa} alt="" />
-
+                    <i class="material-icons">search</i>
                 </div>
             </div>
         )

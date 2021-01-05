@@ -23,10 +23,10 @@ export class Producto extends Component {
         
         const matchingProductos =  [];
         this.state.productos.forEach((producto) => {
-            const categoriaMatching = producto.categoria._id == this.state.categoriaSelected
+            const categoriaMatching = producto.categoria._id === this.state.categoriaSelected
             if (categoriaMatching){
                 if (this.state.marcaSelected){
-                    const foundMarca = producto.marca.find((marca) => marca._id == this.state.marcaSelected)
+                    const foundMarca = producto.marca.find((marca) => marca._id === this.state.marcaSelected)
                     if (foundMarca) {
                         console.log("both matched", producto)
                         matchingProductos.push(producto)
@@ -73,16 +73,13 @@ export class Producto extends Component {
         const urlProductos = "http://localhost:3002/api-guangzhou-service/producto"
         const dataProductos = await Api.getData(urlProductos)
         const productos = dataProductos.body
-        // console.log(productos) 
         this.setState({ productos })  
         
-    
-
         window.scrollTo(0, 0);
 
         var elems = document.querySelectorAll('select');
-        var instances = M.FormSelect.init(elems);
-        // console.log(instances)
+        M.FormSelect.init(elems);
+       
     }
 
 
