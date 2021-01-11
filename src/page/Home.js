@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Banner from '../components/Banner'
-
+import { Helmet } from 'react-helmet'
 import Destacados from '../components/Destacados'
 import Consejos from '../components/Consejos'
 import Api from "../Api"
@@ -37,6 +37,9 @@ export class Home extends Component {
 
         return (
             <div>
+                <Helmet>
+                <title>Corporación Guangzhou</title>
+                </Helmet>
                 <Banner/>
                 {/* <Marcas/> */}
                 <section className="container container-marcas">

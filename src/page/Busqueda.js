@@ -19,14 +19,14 @@ export class Producto extends Component {
         matchingProductos: null
     }
 
+    
     handleClick =  async () => {
         
         const matchingProductos =  [];
         this.state.productos.forEach((producto) => {
-            const categoriaMatching = producto.categoria._id === this.state.categoriaSelected
-            if (categoriaMatching){
+            if (producto.categoria._id == this.state.categoriaSelected){
                 if (this.state.marcaSelected){
-                    const foundMarca = producto.marca.find((marca) => marca._id === this.state.marcaSelected)
+                    const foundMarca = producto.marca.find((marca) => marca._id == this.state.marcaSelected)
                     if (foundMarca) {
                         console.log("both matched", producto)
                         matchingProductos.push(producto)
@@ -37,20 +37,11 @@ export class Producto extends Component {
             }
         })
 
-        // this.state.productos.map(producto => {
-        //     if ( producto.categoria._id == this.state.categoriaSelected) {
-        //         matchingProductos.push(producto)
-        //         console.log(matchingProductos)
-        //     } 
-        // })
-
         await this.setState({ matchingProductos})
-        // console.log("State MatchinProductos",this.state.matchingProductos)
     }
 
     categoriaSelectedHandler = async (e) => {
         await this.setState({categoriaSelected: e.target.value})
-        // console.log("Categoria",await this.state.categoriaSelected)
     }
 
     marcaSelectedHandler = async (e) => {
@@ -153,14 +144,13 @@ export class Producto extends Component {
                     
                                 <div className="card-image">
                                     <img src="https://storage.googleapis.com/contenido-web/storage-img/productos/producto4.png" alt=""/>
-                                    <span className="card-title black-text"></span>
+                                    <span className="card-title"></span>
                                 </div>
                                 <div className="card-content center">
                                     <span className="card-title">{producto.nombre}</span>
-                                    <p></p>
                                 </div>
                                 <div className="card-action center-align">
-                                    <Link to={"/producto/" + producto._id} className="btn btn-small amber black-text"><i className="material-icons dp48">remove_red_eye</i>Ver Producto</Link>
+                                    <Link to={"/producto/" + producto._id} className="btn btn-small amber black-text"><i className="material-icons dp48 ">remove_red_eye</i>Ver Producto</Link>
                                 </div>
                             </div>
                         </div>

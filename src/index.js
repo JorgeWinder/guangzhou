@@ -6,6 +6,7 @@ import App from './components/App';
 import 'materialize-css/dist/css/materialize.css'
 import './global.css'
 
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

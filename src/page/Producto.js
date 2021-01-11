@@ -1,46 +1,51 @@
 import React, { Component } from 'react'
-import img from '../../src/img/prod1.png'
 import marcas from '../../src/img/marcas.png'
-// import ProductoRelacionado from '../components/ProductoRelacionado'
 import Api from '../Api'
-
-
 import { Link } from 'react-router-dom'
-
 import './style/producto.css'
-
-
+import { Helmet } from 'react-helmet' 
 
 
 export class Producto extends Component {
 
     state = {
         producto: null,
+        producto_id: null,
+        whatsappUrl: null,
     }
 
     handleRedireccionar = (id)=>{
         window.location = "/producto/" + id
     }
 
-    
-
     async componentDidMount() {
         window.scrollTo(0, 0);
+        console.log(this.state.producto_id)
         let codigo = this.props.match.params.producto_id
         const url = `http://localhost:3002/api-guangzhou-service/producto?codigo=${codigo}`
         const data = await Api.getData(url)
         this.setState({ producto: data.body })
 
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=51934172415&text=http%3A%2F%2Flocalhost%3A3000%2Fproducto%2F${codigo}`
+        this.setState({whatsappUrl})
     }
-
-   
-
+    
+    
     render() {
 
-      
-
         return (
-            <React.Fragment>
+            <>
+                <Helmet>
+                    <title>{this.state.producto?.nombre}</title>
+                    <meta name="description" content={this.state.producto?.descripcion}/>
+                    <meta property="og:title" content={this.state.producto?.nombre}/>
+                    <meta property="og:description" content={this.state.producto?.descripcion}/>
+                    <meta property="og:image" content={this.state.producto?.imagen}/>
+                    <meta property="og:url" content={window.location.pathname + window.location.search}/>
+                    <meta name="twitter:card" content="summary_large_image"/>
+                    <meta name="twitter:image:alt" content={this.state.producto?.nombre}/>
+                </Helmet>
+
                 <section className="container" style={{ 'marginTop': '40px' }}>
                     <div className="row">
                         <div className="col l7 s12">
@@ -89,7 +94,7 @@ export class Producto extends Component {
                             <p>
                                 <img className="responsive-img" src={marcas} alt="" />
                             </p>
-                            <a href="#!" className="btn btn-large" style={{ width: "100%", backgroundColor: "#5CCB67" }}>Hacer pedido via Whatsapp</a>
+                            <a className="btn btn-large" style={{ width: "100%", backgroundColor: "#5CCB67" }} rel="noopener noreferrer" href={this.state.whatsappUrl} target="_blank">Hacer pedido via Whatsapp</a>
                         </div>
                     </div>
                 </section>
@@ -102,35 +107,44 @@ export class Producto extends Component {
                             <div className="linea-producto"></div>
                         </div>
                     </div>
-                    <div className="row">
-                       
+                    <div className="row"> 
                         {
                             this.state.producto?.productoRelacionado.map((producto) => {
                                 return (
-                                    // <ProductoRelacionado handleRedireccionar={this.handleRedireccionar(producto._id)} nombre={producto.nombre} imagen={producto.imagen}/>  
-                                    <div className="col s12 m4 l4">
-                                        <div className="card">
-                                            <div className="card-image">
+                                    // <ProductoRelacionado nombre={producto.nombre} imagen={producto.imagen}/>  
+                                    <>
+                                    
+                                     <div className="col s12 m4 l4">
+                                         <div className="card">
+                                             <div className="card-image">
 
-                                                <span className="card-title black-text"></span>
-                                            </div>
-                                            <div className="card-content center">
-                                                <span className="card-title" key={producto._id}>{producto.nombre}</span>
-                                                <p></p>
-                                            </div>
-                                            <div className="card-action center-align" >
-                                                {/* <Link to={'/producto/' + producto._id} className="btn btn-small amber black-text"><i className="material-icons dp48">remove_red_eye</i>Ver Producto</Link> */}
-                                                <Link to="#" onClick={ () => this.handleRedireccionar(producto._id)} className="btn btn-small amber black-text"><i className="material-icons dp48">remove_red_eye</i>Ver Producto</Link>
-                                            </div>
-                                        </div>
-                                    </div>
+                                            <span className="card-title black-text"></span>
+                                             </div>
+                                             <div className="card-content center">
+                                                 <span className="card-title">{producto.nombre}</span>
+                                                 <p></p>
+                                             </div>
+                                             <div className="card-action center-align" >
+                                                 <Link 
+                                                    to="#" 
+                                                    onClick={ () => this.handleRedireccionar(producto._id)} 
+                                                    className="btn btn-small amber black-text">
+                                                    <i className="material-icons dp48">remove_red_eye</i>Ver Producto
+                                                </Link> 
+
+                                                 
+                                                {/* <Link to="#" onClick={() => this.handleClicked(producto._id)} className="btn btn-small amber black-text"><i className="material-icons dp48">remove_red_eye</i>Ver Producto</Link>  */}   
+                                             </div>
+                                         </div>
+                                     </div>
+                                    </>
                                 )
                             })
                         }
                      
                     </div>
                 </section>
-            </React.Fragment>
+            </>
         )
     }
 }
