@@ -32,9 +32,9 @@ export class Banner extends Component {
                 }, 5000);
     }
 
-    componentWillUnmount() {
-        clearInterval(this.intervalID);
-    }
+    // componentWillUnmount() {
+    //     clearInterval(this.intervalID);
+    // }
 
     render() {
 

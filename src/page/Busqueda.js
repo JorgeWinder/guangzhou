@@ -24,9 +24,9 @@ export class Producto extends Component {
         
         const matchingProductos =  [];
         this.state.productos.forEach((producto) => {
-            if (producto.categoria._id == this.state.categoriaSelected){
+            if (producto.categoria._id === Number(this.state.categoriaSelected)){
                 if (this.state.marcaSelected){
-                    const foundMarca = producto.marca.find((marca) => marca._id == this.state.marcaSelected)
+                    const foundMarca = producto.marca.find((marca) => marca._id === Number(this.state.marcaSelected))
                     if (foundMarca) {
                         console.log("both matched", producto)
                         matchingProductos.push(producto)

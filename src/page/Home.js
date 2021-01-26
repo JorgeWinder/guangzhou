@@ -59,7 +59,7 @@ export class Home extends Component {
                          {
                                 this.state.productosDestacados?.map(producto => {
                                     return(
-                                    <Destacados nombre={producto.nombre} id={producto._id} imagen={producto.imagen}/>
+                                    <Destacados nombre={producto.nombre} id={producto._id} imagen={producto.imagen} key={producto._id}/>
                                     ) 
                                 })
                             }
